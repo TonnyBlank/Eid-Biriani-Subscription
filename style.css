@@ -1,0 +1,14 @@
+body { 
+    font-family: Arial;
+    background-color: blanchedalmond;
+}
+.error { 
+    color: red; 
+    font-size: 14px; 
+}
+.container { 
+    width: 300px;
+    margin: auto; 
+    padding: 20px; 
+    border: 1px solid #ccc;
+    background-color: rgb(0, 255, 42); }

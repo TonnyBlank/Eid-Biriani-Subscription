@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Form</title>
+    <style>
+        body { 
+            font-family: Arial;
+            background-color: blanchedalmond;
+        }
+        .error { 
+            color: red; 
+            font-size: 14px; 
+        }
+        .container { 
+            width: 300px;
+            margin: auto; 
+            padding: 20px; 
+            border: 1px solid #ccc;
+            background-color: rgb(0, 255, 42); 
+        }
+    </style>
+</head> 
+<body>
+    <div class="container">
+        <h2><i><b>GET BIRIANI FOR FREE</b></i></h2>
+        <p>Please enter your details below to subscribe.</p>
+        <form id="subscriptionForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name">
+            <div class="error" id="nameError"></div>
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <div class="error" id="emailError"></div>
+            <br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your 10-digit phone number">
+            <div class="error" id="phoneError"></div>
+            <br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter a password">
+            <div class="error" id="passwordError"></div>
+            <br>
+
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("subscriptionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let valid = true;
+            
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("phoneError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+
+            let name = document.getElementById("name").value.trim();
+            if (name === "") {
+                document.getElementById("nameError").textContent = "Please enter your name";
+                valid = false;
+            }
+
+            let email = document.getElementById("email").value.trim();
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "Please enter a valid email address";
+                valid = false;
+            }
+
+            let phone = document.getElementById("phone").value.trim();
+            let phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById("phoneError").textContent = "Phone number must be exactly 10 digits";
+                valid = false;
+            }
+
+            let password = document.getElementById("password").value.trim();
+            let passwordPattern = /^(?=.*\d).{6,}$/;
+            if (!passwordPattern.test(password)) {
+                document.getElementById("passwordError").textContent = "Password must be at least 6 characters long and contain a number";
+                valid = false;
+            }
+
+            if (valid) {
+                alert("Thank you for subscribing! Come to MMUst and get your free Biriani");
+            }
+        });
+    </script>
+</body>
+</html>
